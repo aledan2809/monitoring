@@ -1,0 +1,15 @@
+{
+  "name": "pipeline-monitor",
+  "version": "1.0.0",
+  "description": "Real-time AI Pipeline monitor - watches active/failed pipelines and reports status",
+  "type": "module",
+  "scripts": {
+    "start": "node monitor.mjs",
+    "watch": "node monitor.mjs --watch",
+    "service-monitor": "node service-monitor.mjs",
+    "service-check": "node service-monitor.mjs --once"
+  },
+  "dependencies": {
+    "ai-router": "file:../AIRouter"
+  }
+}
