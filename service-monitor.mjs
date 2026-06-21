@@ -91,7 +91,14 @@ const ALERT_COOLDOWN_MS = 30 * 60 * 1000;
 
 async function sendWhatsAppAlert(serviceName, statusText, details) {
   if (!WHATSAPP_PHONE_NUMBER_ID || !WHATSAPP_ACCESS_TOKEN) {
-    console.error('[WhatsApp] Missing credentials — alert NOT sent');
+    const missing = [
+      !WHATSAPP_PHONE_NUMBER_ID && 'WHATSAPP_PHONE_NUMBER_ID',
+      !WHATSAPP_ACCESS_TOKEN && 'WHATSAPP_ACCESS_TOKEN',
+    ].filter(Boolean);
+    console.error(
+      `[WhatsApp] Missing env var(s): ${missing.join(', ')} — alert NOT sent ` +
+        `(set them in .env or the environment; see .env.example). Monitoring continues.`
+    );
     return false;
   }
 
